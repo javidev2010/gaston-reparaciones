@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gaston | Reparaciones del Hogar</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Plomería, electricidad, pintura y reparaciones en general. Atención rápida y confiable.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Gaston<span>Repara</span></div>
+      <nav class="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#antes-despues">Antes/Después</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto" class="btn btn-primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Reparaciones del hogar <span class="nowrap">rápidas y prolijas</span></h1>
+        <p>Plomería, electricidad, pintura y arreglos en general. Presupuesto sin cargo.</p>
+        <a href="#contacto" class="btn btn-primary">Pedí tu presupuesto</a>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2 class="section-title">Servicios</h2>
+        <div class="grid services-grid">
+          <article class="card">
+            <h3>Plomería</h3>
+            <ul>
+              <li>Fugas y pérdidas</li>
+              <li>Colocación de grifería</li>
+              <li>Destapaciones menores</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Electricidad</h3>
+            <ul>
+              <li>Tomacorrientes e iluminación</li>
+              <li>Tableros y térmicas</li>
+              <li>Diagnóstico de cortes</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Pintura</h3>
+            <ul>
+              <li>Interior / exterior</li>
+              <li>Enduido y lijado</li>
+              <li>Reparación de humedad</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Reparaciones</h3>
+            <ul>
+              <li>Carpintería menor</li>
+              <li>Colocación de accesorios</li>
+              <li>Ajustes y mantenimiento</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Antes / Después con deslizador HORIZONTAL -->
+    <section id="antes-despues" class="section">
+      <div class="container">
+        <h2 class="section-title">Antes / Después</h2>
+
+        <div class="before-after" data-initial="50">
+          <!-- Imagen base (ANTES) -->
+          <img
+            class="ba-image ba-before"
+            src="assets/antes.jpg"
+            alt="Estado antes de la reparación"
+            loading="lazy"
+            width="1600"
+            height="900"
+          />
+
+          <!-- Capa superior (DESPUÉS) que se REVELA horizontalmente -->
+          <img
+            class="ba-image ba-after"
+            src="assets/despues.jpg"
+            alt="Resultado después de la reparación"
+            loading="lazy"
+            width="1600"
+            height="900"
+            style="--reveal: 50%"
+          />
+
+          <!-- Línea/handle en el borde de revelado -->
+          <div class="ba-handle" aria-hidden="true"></div>
+
+          <!-- Control: deslizador horizontal -->
+          <label class="ba-slider-label" for="ba-range">Deslizar para ver el cambio</label>
+          <input
+            id="ba-range"
+            class="ba-range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Revelar imagen del después"
+          />
+        </div>
+
+        <noscript>
+          <p><strong>Nota:</strong> activá JavaScript para usar el deslizador y ver la comparación interactiva.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="section">
+      <div class="container">
+        <h2 class="section-title">Galería de trabajos</h2>
+        <div class="grid gallery-grid">
+          <!-- Reemplazá los src por tus fotos -->
+          <figure class="gallery-item">
+            <img src="assets/galeria-1.jpg" alt="Trabajo 1" loading="lazy" width="800" height="600" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/galeria-2.jpg" alt="Trabajo 2" loading="lazy" width="800" height="600" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/galeria-3.jpg" alt="Trabajo 3" loading="lazy" width="800" height="600" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/galeria-4.jpg" alt="Trabajo 4" loading="lazy" width="800" height="600" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/galeria-5.jpg" alt="Trabajo 5" loading="lazy" width="800" height="600" />
+          </figure>
+          <figure class="gallery-item">
+            <img src="assets/galeria-6.jpg" alt="Trabajo 6" loading="lazy" width="800" height="600" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <form class="contact-form" name="contacto" netlify>
+          <div class="form-row">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-row">
+            <label for="telefono">Teléfono / WhatsApp</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="+54 9 ..." required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email (opcional)</label>
+            <input id="email" name="email" type="email" placeholder="tu@correo.com" />
+          </div>
+          <div class="form-row">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Contame qué necesitás" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a class="btn" id="btn-wpp" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          </div>
+          <p class="form-note">También atendemos por WhatsApp. Tiempo de respuesta habitual: el mismo día.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Gaston Reparaciones del Hogar — Buenos Aires</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

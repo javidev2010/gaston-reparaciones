@@ -1,0 +1,243 @@
+:root{
+    --bg: #0b0c10;
+    --card: #111318;
+    --muted: #aab2c0;
+    --text: #e9edf1;
+    --brand: #3aaef9;
+    --brand-ink: #0b2533;
+    --ring: #3aaef9;
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  
+  *{ box-sizing: border-box; }
+  html, body{ height: 100%; }
+  body{
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: radial-gradient(1200px 600px at 20% -10%, #101522, transparent) , var(--bg);
+    line-height: 1.5;
+  }
+  
+  .nowrap{ white-space: nowrap; }
+  
+  .container{
+    width: min(1100px, 92%);
+    margin-inline: auto;
+  }
+  
+  .section{
+    padding: 64px 0;
+  }
+  
+  .section-title{
+    margin: 0 0 20px;
+    font-size: clamp(1.6rem, 2.2vw + 1rem, 2.2rem);
+  }
+  
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border-radius: calc(var(--radius) - 4px);
+    border: 1px solid #2a2f3a;
+    background: #171a22;
+    color: var(--text);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn:active{ transform: translateY(0); }
+  .btn-primary{
+    background: linear-gradient(180deg, var(--brand), #1b8ed2);
+    border-color: #1b8ed2;
+    color: #04121a;
+    font-weight: 600;
+  }
+  
+  .site-header{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,12,16,.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1a1f27;
+  }
+  .header-inner{
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0;
+  }
+  .logo{
+    font-weight: 800; letter-spacing: .3px;
+    font-size: 1.2rem;
+  }
+  .logo span{ color: var(--brand); }
+  .nav{ display: flex; gap: 16px; align-items: center; }
+  .nav a{
+    color: var(--text); text-decoration: none; opacity: .9;
+  }
+  .nav a:hover{ opacity: 1; }
+  
+  .hero{
+    padding: 72px 0 56px;
+    background: radial-gradient(800px 400px at 80% -20%, #0d3a57, transparent);
+  }
+  .hero-inner{
+    text-align: center;
+  }
+  .hero h1{
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 2.5vw + 1.2rem, 2.6rem);
+  }
+  .hero p{
+    margin: 0 0 20px;
+    color: var(--muted);
+  }
+  
+  /* Cards y grids */
+  .grid{
+    display: grid;
+    gap: 16px;
+  }
+  .services-grid{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .card{
+    background: var(--card);
+    border: 1px solid #1a1f27;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h3{ margin-top: 2px; margin-bottom: 10px; }
+  .card ul{ margin: 0; padding-left: 18px; color: var(--muted); }
+  .card li{ margin: 6px 0; }
+  
+  /* Antes/Después */
+  .before-after{
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #0e1118;
+    border: 1px solid #1a1f27;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    margin-top: 8px;
+  }
+  
+  /* Las dos imágenes ocupan el mismo marco, no se escalan desde una esquina. */
+  .ba-image{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    user-select: none; pointer-events: none;
+  }
+  .ba-before{ z-index: 1; }
+  
+  /* La capa “después” se REVELA horizontalmente ajustando su ancho (no se agranda desde una esquina) */
+  .ba-after{
+    z-index: 2;
+    width: var(--reveal, 50%);
+    /* anclada al lado izquierdo para que el deslizador revele de izquierda a derecha */
+    clip-path: inset(0 calc(100% - var(--reveal, 50%)) 0 0);
+  }
+  
+  /* Línea/handle que marca el borde de revelado */
+  .ba-handle{
+    position: absolute; top: 0; bottom: 0;
+    left: calc(var(--reveal, 50%) - 1px);
+    width: 2px; background: rgba(255,255,255,.8);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.3);
+    z-index: 3;
+  }
+  
+  /* Slider */
+  .ba-slider-label{
+    position: absolute; left: 12px; top: 12px; z-index: 4;
+    font-size: .9rem; color: #dfe7ee; background: rgba(0,0,0,.35);
+    padding: 6px 10px; border-radius: 999px; backdrop-filter: blur(4px);
+  }
+  .ba-range{
+    position: absolute; left: 8px; right: 8px; bottom: 12px; z-index: 4;
+    appearance: none; height: 8px; border-radius: 999px;
+    background: #232936; border: 1px solid #2b3241;
+  }
+  .ba-range::-webkit-slider-thumb{
+    appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--brand); border: 2px solid var(--brand-ink);
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  }
+  .ba-range::-moz-range-thumb{
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--brand); border: 2px solid var(--brand-ink);
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  }
+  
+  /* Galería */
+  .gallery-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .gallery-item{
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid #1a1f27;
+    background: #0e1118;
+    aspect-ratio: 4/3;
+  }
+  .gallery-item img{
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .3s ease;
+  }
+  .gallery-item:hover img{ transform: scale(1.04); }
+  
+  /* Formulario */
+  .contact-form{
+    background: var(--card);
+    border: 1px solid #1a1f27;
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    max-width: 720px;
+  }
+  .form-row{
+    display: grid; gap: 6px; margin-bottom: 14px;
+  }
+  input, textarea{
+    width: 100%;
+    background: #0f1219;
+    border: 1px solid #252b37;
+    color: var(--text);
+    padding: 12px 12px;
+    border-radius: 12px;
+    outline: none;
+  }
+  input:focus, textarea:focus{
+    border-color: var(--ring);
+    box-shadow: 0 0 0 4px rgba(58,174,249,.15);
+  }
+  .form-actions{
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .form-note{ color: var(--muted); font-size: .95rem; margin-top: 8px; }
+  
+  .site-footer{
+    border-top: 1px solid #1a1f27;
+    color: var(--muted);
+    padding: 26px 0;
+    margin-top: 40px;
+  }
+  .footer-inner{ text-align: center; }
+  
+  /* Responsive */
+  @media (max-width: 980px){
+    .services-grid{ grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px){
+    .nav{ display: none; } /* simplificación mobile rápida */
+    .services-grid{ grid-template-columns: 1fr; }
+    .gallery-grid{ grid-template-columns: 1fr; }
+  }
+  
